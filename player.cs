@@ -92,12 +92,13 @@ public class player : MonoBehaviour
         else if (head.IsGround())//!head.IsGroundを使うとバグる？理由は不明
         {
             isJump = false;
+            isOtherJump = false;
             jumpTime = 0.0f;
         }
         //何かを踏んだ際のジャンプ
         else if (isOtherJump)
         {
-            if (jumpPos + otherJumpHeight > transform.position.y && jumpTime < jumpLimitTime && !head.IsGround())
+            if (jumpPos + otherJumpHeight > transform.position.y && jumpTime < jumpLimitTime)
             {
                 ySpeed = jumpSpeed;
                 jumpTime += Time.deltaTime;
